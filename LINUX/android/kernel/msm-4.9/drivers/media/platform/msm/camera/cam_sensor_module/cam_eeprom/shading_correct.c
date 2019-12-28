@@ -213,7 +213,7 @@ int get_correction_parameter(int32_t *offset_value, int32_t *lsc_src, int offset
 
 		}
 
-		/* シフト量計算 */
+		/*  */
 		shift_mode_sum = 0;
 		shift_val_sum = 0;
 		plus_mode_cnt = 0;
@@ -273,7 +273,7 @@ int get_correction_parameter(int32_t *offset_value, int32_t *lsc_src, int offset
 int _shading_correction(int32_t *lsc_dst, int32_t *lsc_src,
 	int32_t *offset_value, int32_t offset_coef, int32_t offset_spec) {
 
-	/* lsc_dst, lsc_src以外は10000倍 */
+	/* lsc_dst, lsc_src 10000 */
 	int ret = 0;
 	int color = 0;
 	int v = 0;
@@ -289,7 +289,7 @@ int _shading_correction(int32_t *lsc_dst, int32_t *lsc_src,
 
 	for (color = 0; color < COLOR_MAX; color++)
 	{
-		/* offset_valの分シフトした値を生成 */
+		/* offset_val */
 		for (v = 0; v < V_MAX; v++)
 		{
 			idx_offset = color * V_MAX * H_MAX + v * H_MAX;

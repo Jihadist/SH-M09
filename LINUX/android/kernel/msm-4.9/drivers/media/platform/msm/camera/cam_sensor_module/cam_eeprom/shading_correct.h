@@ -8,7 +8,7 @@
 #define OFFSET_MODE_AVERAGE 1
 #define OFFSET_MODE_MINIMUM 2
 
-// 設定値（_DEBUGが無効時に有効になる）
+// #defilne
 #define CHECK_SPEC  100
 #define OFFSET_COEF 10000 // 1.0f * 10000
 #define OFFSET_MODE OFFSET_MODE_AVERAGE
