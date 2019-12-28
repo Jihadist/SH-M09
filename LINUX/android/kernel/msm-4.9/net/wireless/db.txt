@@ -15,6 +15,10 @@ country 00:
 	# IEEE 802.11ad (60GHz), channels 1..3
 	#(57240 - 63720 @ 2160), (0)
 
+# This is the default regulatory domain for Indonesia
+country 01: DFS-FCC
+	(2402 - 2472 @ 40), (30)
+
 
 country AE: DFS-ETSI
 	(2402 - 2482 @ 40), (20)
@@ -530,6 +534,10 @@ country ID:
 	# ref: http://www.postel.go.id/content/ID/regulasi/standardisasi/kepdir/bwa%205,8%20ghz.pdf
 	(2402 - 2482 @ 40), (30)
 	#(5735 - 5815 @ 20), (30)
+
+country ID2:
+	(2402 - 2482 @ 40), (30)
+	(5735 - 5815 @ 20), (30)
 
 country IE: DFS-ETSI
 	(2402 - 2482 @ 40), (20)
@@ -1126,6 +1134,13 @@ country TH: DFS-FCC
 	#(5735 - 5835 @ 80), (30)
 	# 60 gHz band channels 1-4
 	#(57240 - 65880 @ 2160), (40)
+
+country TH2: DFS-FCC
+	(2402 - 2482 @ 40), (20)
+	(5170 - 5250 @ 80), (24), AUTO-BW
+	(5250 - 5330 @ 80), (24), DFS, AUTO-BW
+	(5490 - 5730 @ 160), (24), DFS
+	(5735 - 5835 @ 80), (30)
 
 country TN: DFS-ETSI
 	(2402 - 2482 @ 40), (20)

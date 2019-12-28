@@ -500,10 +500,14 @@ static int reg_query_builtin(const char *alpha2)
 		alpha2_equal(alpha2, reg_regdb[i+1]->alpha2)) {
 		struct device_node *root = of_find_node_by_path("/");
 		u32 id;
-		if (of_property_read_u32_index(root, "qcom,board-id", 0, &id) == 0) {
-			pr_debug("/qcom,board-id = %d\n", id);
-			if (id == 63) {
-				pr_debug("Regulatory domain %s (144ch W58 enabled)\n", alpha2);
+		if (root &&
+		    of_property_read_u32_index(root, "qcom,board-id", 0, &id) == 0) {
+		    pr_debug("/qcom,board-id = %d, alpha2 = %s\n", id, alpha2);
+			if ((id == 63 &&
+			     alpha2_equal(alpha2, "TW")) ||
+			    (id == 65 &&
+			     (alpha2_equal(alpha2, "ID") || alpha2_equal(alpha2, "TH")))) {
+				pr_debug("Another Domain setting enabled\n");
 				regdom = reg_regdb[i+1];
 			}
 		}

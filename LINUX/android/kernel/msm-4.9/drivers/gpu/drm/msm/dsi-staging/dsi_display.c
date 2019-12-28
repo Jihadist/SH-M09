@@ -5408,12 +5408,19 @@ int dsi_display_get_modes(struct dsi_display *display,
 
 	mutex_lock(&display->display_lock);
 
+#ifdef CONFIG_SHARP_DISPLAY /* CUST_ID_00075 */
+	if (display->modes)
+		goto exit;
+#endif	/* CONFIG_SHARP_DISPLAY */
+
 	rc = dsi_display_get_mode_count_no_lock(display, &total_mode_count);
 	if (rc)
 		goto error;
 
+#ifndef CONFIG_SHARP_DISPLAY /* CUST_ID_00075 */
 	/* free any previously probed modes */
 	kfree(display->modes);
+#endif	/* CONFIG_SHARP_DISPLAY */
 
 	display->modes = kcalloc(total_mode_count, sizeof(*display->modes),
 			GFP_KERNEL);
@@ -5492,7 +5499,9 @@ int dsi_display_get_modes(struct dsi_display *display,
 			array_idx++;
 		}
 	}
-
+#ifdef CONFIG_SHARP_DISPLAY /* CUST_ID_00075 */
+exit:
+#endif	/* CONFIG_SHARP_DISPLAY */
 	*out_modes = display->modes;
 	rc = 0;
 

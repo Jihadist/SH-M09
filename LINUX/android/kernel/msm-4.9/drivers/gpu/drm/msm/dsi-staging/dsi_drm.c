@@ -602,6 +602,9 @@ void dsi_connector_put_modes(struct drm_connector *connector,
 {
 	struct drm_display_mode *drm_mode;
 	struct dsi_display_mode dsi_mode;
+#ifdef CONFIG_SHARP_DISPLAY /* CUST_ID_00075 */
+	struct dsi_display *dsi_display;
+#endif	/* CONFIG_SHARP_DISPLAY */
 
 	if (!connector || !display)
 		return;
@@ -610,6 +613,12 @@ void dsi_connector_put_modes(struct drm_connector *connector,
 		convert_to_dsi_mode(drm_mode, &dsi_mode);
 		dsi_display_put_mode(display, &dsi_mode);
 	}
+#ifdef CONFIG_SHARP_DISPLAY /* CUST_ID_00075 */
+	/* free the display structure modes also */
+	dsi_display = display;
+	kfree(dsi_display->modes);
+	dsi_display->modes = NULL;
+#endif	/* CONFIG_SHARP_DISPLAY */
 }
 
 int dsi_connector_get_modes(struct drm_connector *connector,
