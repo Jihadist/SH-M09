@@ -5250,7 +5250,7 @@ static void shub_int_acc_work_func(struct work_struct *work)
         if(intdetail2 & INTDETAIL_PEDOM_CNT){
             shub_get_sensors_data(SHUB_ACTIVE_PEDOM, data);
             shub_input_report_stepcnt(data);
-            shub_timer_wake_lock_start();            // SHMDS_HUB_0402_01 add
+//          shub_timer_wake_lock_start();            // SHMDS_HUB_0402_01 SHMDS_HUB_0402_03
         }
     }
 

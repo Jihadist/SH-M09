@@ -78,6 +78,7 @@ enum {
 	HW_PLATFORM_QD92   = 61, /* 0x3D */
 	HW_PLATFORM_QE92   = 62, /* 0x3E */
 	HW_PLATFORM_T892   = 63, /* 0x3F */
+	HW_PLATFORM_M92    = 64, /* 0x40 */
 
 	HW_PLATFORM_PUCCI = 70, /* 0x46 */
 	HW_PLATFORM_SK72  = 71, /* 0x47 */
@@ -117,6 +118,7 @@ const char *hw_platform[] = {
 	[HW_PLATFORM_QD92]   = "QD92",
 	[HW_PLATFORM_QE92]   = "QE92",
 	[HW_PLATFORM_T892]   = "T892",
+	[HW_PLATFORM_M92]    = "M92",
 
 	[HW_PLATFORM_PUCCI] = "PUCCI",
 	[HW_PLATFORM_SK72]  = "SK72",

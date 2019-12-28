@@ -28,6 +28,11 @@
 #ifdef CONFIG_SHARP_DISPLAY /* CUST_ID_00067 */
 #include "sharp/drm_cmn.h"
 #endif /* CONFIG_SHARP_DISPLAY */
+#ifdef CONFIG_SHARP_DISPLAY /* CUST_ID_00074 */
+#ifdef CONFIG_ARCH_JOHNNY
+#include "sharp/drm_voltage_control.h"
+#endif /* CONFIG_ARCH_JOHNNY */
+#endif /* CONFIG_SHARP_DISPLAY */
 
 /**
  * topology is currently defined by a set of following 3 values:
@@ -3961,6 +3966,11 @@ int dsi_panel_enable(struct dsi_panel *panel)
 #ifdef CONFIG_SHARP_DISPLAY /* CUST_ID_00010 */ /* CUST_ID_00014 */
 	drm_diag_set_adjusted();
 #endif /* CONFIG_SHARP_DISPLAY */
+#ifdef CONFIG_SHARP_DISPLAY /* CUST_ID_00074 */
+#ifdef CONFIG_ARCH_JOHNNY
+	drm_voltage_control_panel_enable();
+#endif /* CONFIG_ARCH_JOHNNY */
+#endif /* CONFIG_SHARP_DISPLAY */
 	return rc;
 }
 
@@ -4001,6 +4011,11 @@ int dsi_panel_pre_disable(struct dsi_panel *panel)
 	if (panel->type == EXT_BRIDGE)
 		return 0;
 
+#ifdef CONFIG_SHARP_DISPLAY /* CUST_ID_00074 */
+#ifdef CONFIG_ARCH_JOHNNY
+	drm_voltage_control_panel_disable();
+#endif /* CONFIG_ARCH_JOHNNY */
+#endif /* CONFIG_SHARP_DISPLAY */
 	mutex_lock(&panel->panel_lock);
 
 	rc = dsi_panel_tx_cmd_set(panel, DSI_CMD_SET_PRE_OFF);

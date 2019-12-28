@@ -204,3 +204,9 @@ ifeq ($(CONFIG_LEDS_QPNP_WLED),y)
 msm_drm-y += sharp/drm_flbl.o
 endif
 endif
+
+ifeq ($(CONFIG_SHARP_DISPLAY),y)
+ifeq ($(CONFIG_ARCH_JOHNNY),y)
+msm_drm-y += sharp/drm_voltage_control.o
+endif
+endif

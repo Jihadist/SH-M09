@@ -76,6 +76,11 @@
 #ifdef CONFIG_SHARP_DISPLAY /* CUST_ID_00060 */
 #include "drm_sharp.h"
 #endif /* CONFIG_SHARP_DISPLAY */
+#ifdef CONFIG_SHARP_DISPLAY /* CUST_ID_00074 */
+#ifdef CONFIG_ARCH_JOHNNY
+#include "sharp/drm_voltage_control.h"
+#endif /* CONFIG_ARCH_JOHNNY */
+#endif /* CONFIG_SHARP_DISPLAY */
 /*
  * MSM driver version:
  * - 1.0.0 - initial interface
@@ -599,6 +604,11 @@ static int msm_drm_init(struct device *dev, struct drm_driver *drv)
 #ifdef CONFIG_DEBUG_FS
 	drm_fps_create_debugfs(priv);
 #endif /* CONFIG_DEBUG_FS */
+#endif /* CONFIG_SHARP_DISPLAY */
+#ifdef CONFIG_SHARP_DISPLAY /* CUST_ID_00074 */
+#ifdef CONFIG_ARCH_JOHNNY
+	drm_voltage_control_init(dev);
+#endif /* CONFIG_ARCH_JOHNNY */
 #endif /* CONFIG_SHARP_DISPLAY */
 
 	ret = msm_mdss_init(ddev);
